@@ -1,0 +1,6 @@
+var1 = int(input("Give me the first number:"))
+var2 =int(input("Give me the second number:"))
+print(var1,"+", var2, "=", var1+var2)
+print(var1,"-", var2, "=", var1-var2)
+print(var1,"/", var2, "=", int(var1/var2))
+print(var1,"*", var2, "=", var1*var2)
