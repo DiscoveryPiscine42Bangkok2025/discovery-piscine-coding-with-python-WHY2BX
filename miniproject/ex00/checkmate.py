@@ -1,5 +1,5 @@
 def checkmate(board):
-    rows = board.splitlines()   # ['R...', '.K..', '..P.', '....']
+    rows = board.splitlines()
     board_size = len(rows)
     
     king_pos = None
@@ -9,7 +9,7 @@ def checkmate(board):
                 king_pos = (r, c)
                 break
     kr, kc = king_pos
-    pawn_attack = [(kr-1, kc-1), (kr-1, kc+1)]  # ช่องที่ Pawn สามารถโจมตีได้
+    pawn_attack = [(kr+1, kc-1), (kr+1, kc+1)]  # พิกัดที่ถ้า pawn อยู่ king จะโดน check
 
     for (r, c) in pawn_attack:
         if 0 <= r < board_size and 0 <= c < board_size and rows[r][c] == "P":
@@ -25,10 +25,11 @@ def checkmate(board):
             if not (0 <= r < board_size and 0 <= c < board_size):  # ออกนอกกระดาน
                 break
             piece = rows[r][c]
-            if piece != ".":   # เจอตัวแรก
+            if piece != ".":   # กันเจอหมากซ้อนกัน (กินไม่ถึง)
                 if piece in ("R", "Q"): 
                     return "Success"
                 break
+
     directions = [(-1,-1), (-1,1), (1,-1), (1,1)]
 
     for dr, dc in directions:
